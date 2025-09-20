@@ -1,0 +1,42 @@
+/* Contenedor del Brand */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  width: 100%;
+  border-bottom: 1px solid #9c9c9c;
+  padding-bottom: 0.7rem;
+}
+
+/* Logo del Brand */
+.brand-logo {
+  width: 30px;
+  height: auto;
+  flex-shrink: 0;
+}
+
+/* Contenedor de los textos del Brand */
+.brand-texts {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+/* Estilo base compartido para textos */
+.brand-texts p {
+  font-family: var(--font-family-brand);
+  color: var(--gray-light);
+}
+
+/* Estilo del título del Brand */
+.brand-title {
+  font-size: var(--font-sm);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+/* Estilo del subtítulo del Brand */
+.brand-subtitle {
+  font-size: var(--font-sm);
+  font-weight: 500;
+}

@@ -1,7 +1,9 @@
 import { Routes, Route, Navigate } from "react-router-dom";
-import Home from "./pages/Home/Home";
-/* import Login from "./pages/Login/Login";
-import Register from "./pages/Register/Register";
+
+import Login from "./pages/login/Login";
+
+// import Home from "./pages/Home/Home";
+/*import Register from "./pages/Register/Register";
 import ResetPasswordRequest from "./pages/ResetPassword/ResetPasswordRequest";
 import ResetPasswordSent from "./pages/ResetPassword/ResetPasswordSent";
 import ResetPasswordNew from "./pages/ResetPassword/ResetPasswordNew"; */
@@ -9,9 +11,9 @@ import ResetPasswordNew from "./pages/ResetPassword/ResetPasswordNew"; */
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
-      {/* <Route path="/login" element={<Login />} />
-      <Route path="/register" element={<Register />} /> */}
+      <Route path="/" element={<Login />} />
+      <Route path="/login" element={<Login />} />
+      {/* <Route path="/register" element={<Register />} /> */}
 
       {/* Flujo de reset de contraseña */}
       {/* <Route path="/reset-password" element={<ResetPasswordRequest />} />

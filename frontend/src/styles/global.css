@@ -1,0 +1,91 @@
+/* Importación de fuentes */
+@import url("/assets/fonts/questrial/Questrial.css");
+@import url("/assets/fonts/eb-garamond/EBGaramond.css");
+
+/* Variables globales */
+:root {
+  /* Rojo institucional */
+  --red-base: #9a1413;
+  --red-medium: #ad1a18;
+  --red-light: #e51c23;
+
+  /* Gris institucional */
+  --gray-base: #716f60;
+  --gray-light: #717579;
+
+  /* 🎨 Colores base */
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-text-base: #333; /* texto principal */
+  --color-text-muted: #666; /* texto secundario */
+
+  /* 🌈 Overlay / Progreso */
+  --auth-overlay-bg: rgba(0, 0, 0, 0.9);
+  --auth-progress-track: rgba(255, 255, 255, 0.2);
+
+  /* 📐 Layout formulario */
+  --auth-form-max-width: 24.375rem; /* 390px */
+  --auth-form-min-height: 18.75rem; /* 300px */
+  --auth-form-margin-x: 5%;
+
+  /* 🧩 Espaciados */
+  --space-xs: 0.25rem; /* 4px */
+  --space-sm: 0.5rem; /* 8px */
+  --space-md: 0.75rem; /* 12px */
+  --space-lg: 1rem; /* 16px */
+  --space-xl: 1.25rem; /* 20px */
+  --space-2xl: 1.5rem; /* 24px */
+  --space-3xl: 1.75rem; /* 28px */
+  --space-4xl: 2rem; /* 32px */
+
+  /* 🔲 Border radius */
+  --radius-xs: 0.25rem; /* 4px */
+  --radius-sm: 0.5rem; /* 8px */
+  --radius-md: 0.75rem; /* 12px */
+  --radius-lg: 1rem; /* 16px */
+  --radius-xl: 1.25rem; /* 20px */
+  --radius-2xl: 1.5rem; /* 24px */
+  --radius-3xl: 1.75rem; /* 28px */
+  --radius-4xl: 2rem; /* 32px */
+  --radius-full: 9999px; /* círculo/píldora */
+
+  /* 🌑 Sombras */
+  --shadow-md: 0.125rem 0.125rem 1.125rem 0 var(--color-black);
+
+  /* 📊 Progreso */
+  --auth-progress-height: 0.5rem;
+
+  /* ⏱️ Transiciones */
+  --transition-fast: 0.05s linear;
+  --transition-normal: 0.4s ease-in-out;
+  --transition-slow: 0.6s ease-in-out;
+
+  /* 🖋️ Tipografía: familia */
+
+  --font-family-brand: "EB Garamond", Georgia, serif; /* títulos institucionales */
+  --font-family-base: "Segoe UI", sans-serif; /* cuerpo y UI */
+  --font-family-mono: "Courier New", monospace; /* opcional: código/números */
+
+  /* 🖋️ Tipografía: tamaños */
+  --font-xs: 0.75rem; /* 12px */
+  --font-sm: 0.875rem; /* 14px */
+  --font-md: 1rem; /* 16px */
+  --font-lg: 1.125rem; /* 18px */
+  --font-xl: 1.25rem; /* 20px */
+  --font-2xl: 1.375rem; /* 22px */
+  --font-3xl: 1.5rem; /* 24px */
+
+  /* 🔝 Z-index */
+  --z-background: 0;
+  --z-overlay: 10;
+  --z-form: 20;
+}
+
+/* Reset y fuente base */
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  font-family: "Questrial", Arial, Helvetica, sans-serif;
+}

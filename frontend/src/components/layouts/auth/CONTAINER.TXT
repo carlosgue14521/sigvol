@@ -1,0 +1,26 @@
+import "./style/AuthFormContainer.css";
+
+interface AuthFormContainerProps {
+  step: "form" | "ready" | "overlay" | "transition";
+  children: React.ReactNode;
+}
+
+const AuthFormContainer = ({ step, children }: AuthFormContainerProps) => {
+  return (
+    // Contenedor principal del formulario (animado según step)
+    <div
+      className={`authLayout-container ${
+        step === "form"
+          ? "clip-vertical-in"
+          : step === "ready"
+          ? "visible"
+          : ""
+      }`}
+    >
+      {/* Wrapper del contenido interno */}
+      <div className="authLayout-formWrapper">{children}</div>
+    </div>
+  );
+};
+
+export default AuthFormContainer;

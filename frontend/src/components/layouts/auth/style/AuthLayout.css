@@ -1,0 +1,16 @@
+/* Layout principal */
+.authLayout-root {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Fondo de la página */
+.authLayout-background {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  z-index: var(--z-background);
+}

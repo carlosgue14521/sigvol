@@ -1,0 +1,28 @@
+import AuthLayout from "../../components/layouts/auth/AuthLayout";
+import AuthHeader from "../../components/layouts/auth/AuthHeader";
+import AuthFormBody from "../../components/layouts/auth/AuthFormBody";
+import LoginForm from "../../components/forms/auth/LoginForm";
+
+const Login = () => {
+  return (
+
+    /* Nivel raíz → .authLayout-root */
+    <AuthLayout>
+
+      {/* Encabezado institucional dentro del formWrapper → .auth-header */}
+      <AuthHeader title="Iniciar Sesión" subtitle="Ingrese sus credenciales de acceso al sistema."
+      />
+
+      {/* Contenedor del cuerpo del formulario → .auth-form-body */}
+      <AuthFormBody>
+
+        {/* Formulario real con inputs y botón */}
+        <LoginForm />
+
+      </AuthFormBody>
+
+    </AuthLayout>
+  );
+};
+
+export default Login;

@@ -1,0 +1,33 @@
+/* Contenedor del formulario */
+.authLayout-container {
+  position: relative;
+  z-index: var(--z-form);
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 100%;
+  clip-path: inset(50% 0% 50% 0%);
+  transition: clip-path var(--transition-slow);
+}
+
+/* Contenedor abierto desde el centro */
+.authLayout-container.clip-vertical-in,
+.authLayout-container.visible {
+  clip-path: inset(0% 0% 0% 0%);
+}
+
+/* Wrapper interno del formulario */
+.authLayout-formWrapper {
+  background: var(--color-white);
+  padding: 0.9rem 1.2rem 1.35rem;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  width: 100%;
+  max-width: var(--auth-form-max-width);
+  min-height: var(--auth-form-min-height);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-right: var(--auth-form-margin-x);
+  gap: var(--space-md);
+}

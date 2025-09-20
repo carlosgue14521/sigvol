@@ -21,7 +21,20 @@
     "noUnusedParameters": true,
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+    "noUncheckedSideEffectImports": true,
+
+    /* Alias */
+    "baseUrl": "src",
+    "paths": {
+      "@components/*": ["components/*"],
+      "@layouts/*": ["components/layouts/*"],
+      "@forms/*": ["components/forms/*"],
+      "@context/*": ["context/*"],
+      "@assets/*": ["assets/*"],
+      "@config/*": ["config/*"],
+      "@pages/*": ["pages/*"],
+      "@styles/*": ["styles/*"]
+    }
   },
   "include": ["src"]
 }

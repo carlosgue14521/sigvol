@@ -1,0 +1,302 @@
+import { useState } from "react";
+import { CheckCircle, XCircle } from "lucide-react";
+import "./LoginForm.css";
+
+type ValidationResult = {
+  type: "error" | "success";
+  text: string;
+};
+
+const validateDNI = (value: string): ValidationResult => {
+  if (!value) {
+    return { type: "error", text: "El DNI es obligatorio" };
+  }
+  if (!/^\d{8}$/.test(value)) {
+    return { type: "error", text: "El DNI debe tener 8 dígitos" };
+  }
+  return { type: "success", text: "DNI válido" };
+};
+
+const validatePassword = (value: string): ValidationResult => {
+  if (!value) {
+    return { type: "error", text: "La contraseña es obligatoria" };
+  }
+  if (value.length < 6) {
+    return { type: "error", text: "Debe tener al menos 6 caracteres" };
+  }
+  return { type: "success", text: "Contraseña válida" };
+};
+
+const LoginForm = () => {
+  const [dni, setDni] = useState("");
+  const [password, setPassword] = useState("");
+  const [dniMsg, setDniMsg] = useState<ValidationResult | null>(null);
+  const [passwordMsg, setPasswordMsg] = useState<ValidationResult | null>(null);
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setSubmitted(true);
+
+    const dniValidation = validateDNI(dni);
+    const passwordValidation = validatePassword(password);
+
+    setDniMsg(dniValidation);
+    setPasswordMsg(passwordValidation);
+
+    if (dniValidation.type === "success" && passwordValidation.type === "success") {
+      console.log("Formulario válido ✅");
+      // Aquí va tu lógica de login (API call, etc.)
+    }
+  };
+
+  const handleDniChange = (value: string) => {
+    setDni(value);
+    if (submitted) setDniMsg(validateDNI(value));
+  };
+
+  const handlePasswordChange = (value: string) => {
+    setPassword(value);
+    if (submitted) setPasswordMsg(validatePassword(value));
+  };
+
+  return (
+    <form className="login-form" onSubmit={handleSubmit}>
+      {/* DNI */}
+      <div className="form-group">
+        <label htmlFor="dni">DNI</label>
+        <div className="input-wrapper">
+          <input
+            id="dni"
+            type="text"
+            value={dni}
+            onChange={(e) => handleDniChange(e.target.value)}
+            onBlur={() => submitted && setDniMsg(validateDNI(dni))}
+            placeholder="Ingrese su DNI"
+            className={
+              submitted && dniMsg
+                ? dniMsg.type === "error"
+                  ? "input error"
+                  : "input success"
+                : "input"
+            }
+          />
+          {submitted && dniMsg?.type === "error" && (
+            <XCircle size={20} className="icon error show" />
+          )}
+          {submitted && dniMsg?.type === "success" && (
+            <CheckCircle size={20} className="icon success show" />
+          )}
+        </div>
+        {submitted && dniMsg?.type === "error" && (
+          <div className="msg error">{dniMsg.text}</div>
+        )}
+      </div>
+
+      {/* Contraseña */}
+     
+      <div className="form-group">
+        
+        <label htmlFor="password">Contraseña</label>
+        <div className="input-wrapper">
+          <input
+            id="password"
+            type="password"
+            value={password}
+            onChange={(e) => handlePasswordChange(e.target.value)}
+            onBlur={() => submitted && setPasswordMsg(validatePassword(password))}
+            placeholder="Ingrese su contraseña"
+            className={
+              submitted && passwordMsg
+                ? passwordMsg.type === "error"
+                  ? "input error"
+                  : "input success"
+                : "input"
+            }
+          />
+          {submitted && passwordMsg?.type === "error" && (
+            <XCircle size={20} className="icon error show" />
+          )}
+          {submitted && passwordMsg?.type === "success" && (
+            <CheckCircle size={20} className="icon success show" />
+          )}
+        </div>
+        {submitted && passwordMsg?.type === "error" && (
+          <div className="msg error">{passwordMsg.text}</div>
+        )}
+      </div>
+
+      <button type="submit" className="btn-submit">
+        Ingresar
+      </button>
+    </form>
+  );
+};
+
+export default LoginForm;
+
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 360px;
+  margin: auto;
+  padding: 1rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+  font-size: 0.95rem;
+  color: #222;
+}
+
+/* Wrapper para ícono dentro del input */
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+
+
+
+/* Contenedor */
+.input-group {
+  margin-bottom: 1rem; /* mb-4 */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Label */
+.input-label {
+  display: block;
+  margin-bottom: 0.5rem; /* mb-2 */
+  font-size: 0.875rem; /* text-sm */
+  font-weight: 500; /* font-medium */
+  color: #374151; /* gray-700 */
+}
+
+/* Input */
+.input {
+  width: 100%;
+  padding: 0.6rem; /* p-2.5 */
+  font-size: 0.875rem; /* text-sm */
+  color: #111827; /* gray-900 */
+  background-color: #ffffff; /* bg-white */
+  border: 1px solid #aeaeaf; /* border-gray-300 */
+  border-radius: 0.5rem; /* rounded-lg */
+  outline: none;
+  line-height: 1.5; /* Bootstrap lo incluye para mantener proporción */
+  transition: border-color 0.2s ease, box-shadow 0.2s ease; /* transition-colors duration-200 */
+}
+
+/* Placeholder */
+.input::placeholder {
+  color: #9ca3af; /* gray-400 placeholder */
+}
+
+/* Focus */
+
+/* Hover (solo si no hay error) */
+.input:hover:not(.error):not(:focus) {
+  border-color: #7f7f7f
+}
+
+/* Focus */
+.input:focus:not(.error) {
+  border-color: #3b82f6; /* azul Tailwind blue-500 */
+  box-shadow: 0 0 0 1px #3b82f6; /* glow sutil */
+}
+
+/* Estado de error */
+.input.error {
+  border-color: #dc3545; /* rojo Tailwind red-500 */
+  color: #7a2424;
+}
+
+.input.error:focus {
+  border-color: #dc3545;
+  box-shadow: 0 0 0 1px #dc3545; /* glow rojo sutil */
+}
+
+
+/* Íconos dentro del input */
+/* Íconos dentro del input */
+.icon {
+  position: absolute;
+  right: 0.6rem;
+  pointer-events: none;
+  opacity: 0;
+  transform: scale(0.6);
+}
+
+/* Animación de entrada */
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+
+  60% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Cuando aparece */
+.icon.show {
+  animation: popIn 0.8s ease forwards;
+}
+
+.icon.error {
+  color: #dc3545;
+}
+
+.icon.success {
+  color: #1ed760;
+}
+
+
+/* Mensajes de error */
+.msg {
+  margin-top: 0.4rem;
+  font-size: 0.85rem;
+}
+
+
+
+.msg.error {
+  color: #dc3545;
+}
+
+/* Botón */
+.btn-submit {
+  padding: 0.75rem;
+  background-color: #0056b3;
+  color: white;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.btn-submit:hover {
+  background-color: #004099;
+}
+
+.btn-submit:active {
+  transform: scale(0.98);
+}

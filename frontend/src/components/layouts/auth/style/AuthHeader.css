@@ -1,0 +1,38 @@
+/* Contenedor principal del header */
+.authHeader-root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-lg);
+}
+
+/* Zona central del header */
+.authHeader-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+  width: 100%;
+  padding: 0 var(--space-lg);
+}
+
+/* Logo del SISTEMA SIGVOL */
+.authHeader-logo-sigvol {
+  width: 120px;
+}
+
+/* Título principal del Header */
+.authHeader-title {
+  text-align: center;
+  font-size: var(--font-2xl);
+  color: var(--color-text-base);
+  font-family: var(--font-family-base);
+  font-weight: 700;
+}
+
+/* Subtítulo del Header */
+.authHeader-subtitle {
+  font-size: var(--font-sm);
+  color: var(--color-text-muted);
+  align-self: flex-start; /* rompe el centrado solo para este elemento */
+}
